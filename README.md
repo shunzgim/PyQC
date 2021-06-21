@@ -1,2 +1,1 @@
-# PyQC
-Quantum circuit simulation
+Quantum circuit simulation, mainly used for learning and research.
