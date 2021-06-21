@@ -1,4 +1,3 @@
-from os import name
 import sys
 sys.path.append('../')
 
