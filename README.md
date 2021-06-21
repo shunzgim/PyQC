@@ -1,0 +1,2 @@
+# PyQC
+Quantum circuit simulation
