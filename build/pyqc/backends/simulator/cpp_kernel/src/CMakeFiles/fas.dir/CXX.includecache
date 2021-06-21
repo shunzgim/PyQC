@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/include/full_amplitude_sim.hpp
+iostream
+-
+complex
+-
+omp.h
+-
+string
+-
+map
+-
+
+/home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/src/full_amplitude_sim.cpp
+iostream
+-
+assert.h
+-
+unistd.h
+-
+string.h
+-
+../include/full_amplitude_sim.hpp
+/home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/include/full_amplitude_sim.hpp
+
