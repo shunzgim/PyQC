@@ -17,10 +17,13 @@ class fullASim
   fullASim();
   ~fullASim();
   void flush(int);
+  int getLog2(int);
   void applyOneGate(StateType * buf, int, int);
   void applyControlOneGate(StateType * buf, int, int, int);
+  void applyConstantModExp(int, int, int);
   StateType getOneAmplitudeFromBinstring(std::string);
   float getExpectation(int *, int);
+  int getMeasureResultHandle(int);
   void grad_helper_init(StateType * buf, int *, int *, int);
   float grad_helper(StateType * buf, int *, int *, int);
   void show_state();

@@ -15,7 +15,7 @@ simType = simulatorType()
 class Environment:
     """
     """
-    def __init__(self, backend_type):
+    def __init__(self, backend_type, show=True):
         """
         """
         import psutil
@@ -27,13 +27,14 @@ class Environment:
             while 3*(1<<m) > available: # 留出备份的空间
                 m -= 1
             return m
-        print('##################################################################################')
-        print('可用资源信息')
-        print("物理核数:%s"%psutil.cpu_count(logical=False))
-        print("逻辑核数:%s"%psutil.cpu_count())     
-        print("虚拟内存(total):%sG"%round((float(psutil.virtual_memory().total)/1024/1024/1024), 2))
-        print("虚拟内存(available):%sG"%round((float(psutil.virtual_memory().available)/1024/1024/1024), 2))
-        print("交换内存(total):%sG"%round((float(psutil.swap_memory().total)/1024/1024/1024), 2))
+        if show:
+            print('##################################################################################')
+            print('可用资源信息')
+            print("物理核数:%s"%psutil.cpu_count(logical=False))
+            print("逻辑核数:%s"%psutil.cpu_count())     
+            print("虚拟内存(total):%sG"%round((float(psutil.virtual_memory().total)/1024/1024/1024), 2))
+            print("虚拟内存(available):%sG"%round((float(psutil.virtual_memory().available)/1024/1024/1024), 2))
+            print("交换内存(total):%sG"%round((float(psutil.swap_memory().total)/1024/1024/1024), 2))
         amplitude_byte = 8 #单精度振幅占用8Bytes
         available = float(psutil.virtual_memory().available) / amplitude_byte
         self.MAX_QUBIT_NUM = get_log2n(available)
@@ -42,12 +43,13 @@ class Environment:
         else:
             self.backend = SingleAmplitudeSimulator()
         self.IS_SINGLE_AMPLITUDE = backend_type
-        print('##################################################################################')
-        if self.IS_SINGLE_AMPLITUDE:
-            print('注意：单振幅模拟初始化成功')
-        else:
-            print('注意：全振幅模拟初始化成功, 最大可申请%s个量子比特!              '%self.MAX_QUBIT_NUM)
-        print('##################################################################################')
+        if show:
+            print('##################################################################################')
+            if self.IS_SINGLE_AMPLITUDE:
+                print('注意：单振幅模拟初始化成功')
+            else:
+                print('注意：全振幅模拟初始化成功, 最大可申请%s个量子比特!              '%self.MAX_QUBIT_NUM)
+            print('##################################################################################')
        
     def allocateQubits(self, n):
         """
@@ -166,6 +168,17 @@ class Environment:
                 plt.savefig('%s.png'%name)
                 plt.show()
         return res_string
+
+    def getMeasureResultHandle(self, target):
+        """
+        """
+        if self.IS_SINGLE_AMPLITUDE:
+            raise RuntimeError("只对全振幅提供")
+        if isinstance(target, Qubit):
+            target = [target.id]
+        else:
+            target = [q.id for q in target]
+        return self.backend.getMeasureResultHandle(target)
 
     def getExpectation(self, target):
         """

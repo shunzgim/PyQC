@@ -1,3 +1,4 @@
+from numpy.lib.arraysetops import isin
 from pyqc.gates import *
 from fullAlib import *
 
@@ -18,6 +19,10 @@ class FullAmplitudeSimulator:
                 #print(to_array, target)
                 self.fullAlib.applyOneGate(to_array,target[0], 0)
             elif gate.name=="CNOT" or gate.name=="CNOT.dag" or gate.name=="CZ" or gate.name=="CZ.dag":
+                to_array = gate.cmatrix.A.reshape(4)
+                #print(to_array, target, control)
+                self.fullAlib.applyControlOneGate(to_array, target[0], control[0], 0)
+            elif isinstance(gate ,CR) or isinstance(gate, CRDag):
                 to_array = gate.cmatrix.A.reshape(4)
                 #print(to_array, target, control)
                 self.fullAlib.applyControlOneGate(to_array, target[0], control[0], 0)
@@ -50,6 +55,9 @@ class FullAmplitudeSimulator:
                 self.fullAlib.applyControlOneGate(to_array, target[1], target[0], 0)
                 self.fullAlib.applyControlOneGate(to_array, target[0], target[1], 0)
                 self.fullAlib.applyControlOneGate(to_array, target[1], target[0], 0)
+            elif gate.name == "CMExp":
+                # 为了高效实现Shor算法
+                self.fullAlib.applyConstantModExp(gate.a, gate.N, len(control))
             else:
                 print(gate.name)
                 raise RuntimeError('error')
@@ -59,5 +67,8 @@ class FullAmplitudeSimulator:
         
     def getExpectation(self, target):
         return self.fullAlib.getExpectation(target, len(target))
+
+    def getMeasureResultHandle(self, target):
+        return self.fullAlib.getMeasureResultHandle(len(target))
 
 
