@@ -18,6 +18,7 @@ PYBIND11_MODULE(fullAlib, m) {
             StateType *ptr = (StateType *) buf.ptr;
             a.applyControlOneGate(ptr, target, control, tag);
         })
+        .def("applyConstantModExp", &fullASim::applyConstantModExp)
         .def("getOneAmplitudeFromBinstring",[](fullASim &a, std::string binstring){
             StateType amplitude = a.getOneAmplitudeFromBinstring(binstring);
             return amplitude;
@@ -27,6 +28,7 @@ PYBIND11_MODULE(fullAlib, m) {
             int *ptr = (int *) buf.ptr;
             return a.getExpectation(ptr, size);
         })
+        .def("getMeasureResultHandle", &fullASim::getMeasureResultHandle)
         .def("grad_helper_init", [](fullASim &a, pybind11::array_t<StateType> matrix_list, pybind11::array_t<int>target_list, pybind11::array_t<int>size_list, int size){
             pybind11::buffer_info matrix_buf = matrix_list.request();
             pybind11::buffer_info target_buf = target_list.request();
