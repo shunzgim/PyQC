@@ -69,7 +69,7 @@ def create_hp_hb(n):
     g.add_edges_from(hp.keys())
     fig, ax = plt.subplots()
     nx.draw(g, ax=ax, with_labels=True)
-    fig.savefig('./network.png')
+    fig.savefig('./output/network.png')
     #plt.show()
     return hp,hb
 
