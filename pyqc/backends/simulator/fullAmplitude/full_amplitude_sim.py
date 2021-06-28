@@ -26,6 +26,10 @@ class FullAmplitudeSimulator:
                 to_array = gate.cmatrix.A.reshape(4)
                 #print(to_array, target, control)
                 self.fullAlib.applyControlOneGate(to_array, target[0], control[0], 0)
+            elif isinstance(gate, CUOne):
+                to_array = gate.cmatrix.A.reshape(4)
+                #print(to_array, target, control)
+                self.fullAlib.applyControlOneGate(to_array, target[0], control[0], 0)
             elif gate.name == "Toffili":
                 h_array = H.matrix.A.reshape(4)
                 s_array = S.matrix.A.reshape(4)

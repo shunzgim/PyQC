@@ -165,7 +165,7 @@ class Environment:
                 plt.grid()
                 plt.xlabel('The measured results')
                 plt.ylabel('probability')
-                plt.savefig('%s.png'%name)
+                plt.savefig('./output/%s.png'%name)
                 plt.show()
         return res_string
 

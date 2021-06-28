@@ -1,6 +1,7 @@
 import math
 import cmath
 import numpy as np
+from scipy.linalg import expm
 
 
 
@@ -444,6 +445,27 @@ class RzDag(OneGate):
     @property
     def name(self):
         return 'Rz(%s).dag'%round(self.var.angle,3)
+
+
+class HSimOneGate(OneGate):
+    """
+    exp(i*A*t)
+    """
+    def __init__(self, A, t, theta):
+        name = 'HSim_%s'%round(theta,3)
+        matrix = np.matrix(expm(1j*t*A*theta))
+        superop = None
+        super(HSimOneGate, self).__init__(name, matrix, superop)
+
+
+class HSimDagOneGate(OneGate):
+    def __init__(self, A, t, theta):
+        name = 'HSim_Dag%s'%round(theta,3)
+        matrix = np.matrix(expm(1j*t*A*theta)).H
+        superop = None
+        super(HSimDagOneGate, self).__init__(name, matrix, superop)
+
+
 ##############################################################################################
 #定义受控门CNOTGate、CZGate、ToffiliGate以及交换门SwapGate,注意：量子门的矩阵需要在运行时计算
 ##############################################################################################
@@ -1055,6 +1077,14 @@ class CRDag(ControledGate):
     @property
     def name(self):
         return 'CR(%s).dag'%round(self.var.angle,3)
+
+
+class CUOne(ControledGate):
+    def __init__(self, cgate):
+        name = "CU(%s)"%cgate.name
+        cmatrix = cgate.matrix
+        superop = None
+        super(CUOne,self).__init__(name, cmatrix, superop)
 
 
 class ToffiliGate:
