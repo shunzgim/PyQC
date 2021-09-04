@@ -28,3 +28,9 @@ PyQC 是一个量子线路的经典模拟器，包含全振幅和单振幅两种
 .. toctree::
    :maxdepth: 2
    :caption: API文档
+
+   environment
+   backends
+   gates
+   qcglue
+   types
