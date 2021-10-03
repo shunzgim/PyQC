@@ -69,7 +69,7 @@ def create_hp_hb(n):
     g.add_edges_from(hp.keys())
     fig, ax = plt.subplots()
     nx.draw(g, ax=ax, with_labels=True)
-    fig.savefig('./output/network.png')
+    fig.savefig('./output/QAOA_network.png')
     #plt.show()
     return hp,hb
 
@@ -153,7 +153,7 @@ if __name__ == '__main__':
     ax2.legend(loc=4)
     ax2.grid()
     ax2.set_xlabel('iterations')
-    plt.savefig('parameter_analysis.png')
+    plt.savefig('./output/QAOA_parameter_analysis.png')
     plt.show()
     
     #################### 执行量子线路并打印测量结果
