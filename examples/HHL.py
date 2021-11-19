@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../')
-
 from pyqc import *
 import numpy as np
 

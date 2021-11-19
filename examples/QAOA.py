@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../')
-
 import time
 import numpy as np
 from pyqc import *
@@ -73,6 +70,15 @@ def create_hp_hb(n):
     #plt.show()
     return hp,hb
 
+#################### 自定义优化器
+class Adam(Optimizer):
+    def __init__(self, thetas, lr):
+        super().__init__(thetas, lr)
+
+    def update(self):
+        for v in self.var:
+            v.value += self.lr*v.grad
+
 
 if __name__ == '__main__':
     #################### 申请模拟器
@@ -97,10 +103,11 @@ if __name__ == '__main__':
     vqf = VariationalQuantumFramework(env.backend, vqc, cost_Hamiltonian=hp)
 
     #################### 定义优化器
-    opt = Optimizer(thetas, lr)
+    # opt = Optimizer(thetas, lr)
+    opt = Adam(thetas, lr)
     
     #################### 训练变分量子线路
-    iteration = 50
+    iteration = 100
     loss_list = []
     beta_list = [[] for i in range(p)]
     gamma_list = [[] for i in range(p)]

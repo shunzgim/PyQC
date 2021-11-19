@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC   -fopenmp
 
 CXX_DEFINES = -Dfas_EXPORTS
 
-CXX_INCLUDES = -I/home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/src/../include 
+CXX_INCLUDES = -I/home/shunzi/qvm/PyQC/pyqc/backends/simulator/cpp_kernel/src/../include 
 

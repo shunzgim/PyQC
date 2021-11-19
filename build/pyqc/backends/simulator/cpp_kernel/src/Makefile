@@ -51,10 +51,10 @@ RM = /opt/cmake-3.16.8-Linux-x86_64/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shunzi/qvm/PyQC1.6
+CMAKE_SOURCE_DIR = /home/shunzi/qvm/PyQC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shunzi/qvm/PyQC1.6/build
+CMAKE_BINARY_DIR = /home/shunzi/qvm/PyQC/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -83,14 +83,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/shunzi/qvm/PyQC1.6/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/shunzi/qvm/PyQC1.6/build/CMakeFiles /home/shunzi/qvm/PyQC1.6/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/progress.marks
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shunzi/qvm/PyQC1.6/build/CMakeFiles 0
+	cd /home/shunzi/qvm/PyQC/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/shunzi/qvm/PyQC/build/CMakeFiles /home/shunzi/qvm/PyQC/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/progress.marks
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shunzi/qvm/PyQC/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/clean
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -100,22 +100,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/preinstall
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/preinstall
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/shunzi/qvm/PyQC/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/rule:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/rule
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/rule
 .PHONY : pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/rule
 
 # Convenience name for target.
@@ -125,7 +125,7 @@ fas: pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/rule
 
 # fast build rule for target.
 fas/fast:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build
 .PHONY : fas/fast
 
 full_amplitude_sim.o: full_amplitude_sim.cpp.o
@@ -134,7 +134,7 @@ full_amplitude_sim.o: full_amplitude_sim.cpp.o
 
 # target to build an object file
 full_amplitude_sim.cpp.o:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.o
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.o
 .PHONY : full_amplitude_sim.cpp.o
 
 full_amplitude_sim.i: full_amplitude_sim.cpp.i
@@ -143,7 +143,7 @@ full_amplitude_sim.i: full_amplitude_sim.cpp.i
 
 # target to preprocess a source file
 full_amplitude_sim.cpp.i:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.i
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.i
 .PHONY : full_amplitude_sim.cpp.i
 
 full_amplitude_sim.s: full_amplitude_sim.cpp.s
@@ -152,7 +152,7 @@ full_amplitude_sim.s: full_amplitude_sim.cpp.s
 
 # target to generate assembly for a file
 full_amplitude_sim.cpp.s:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.s
+	cd /home/shunzi/qvm/PyQC/build && $(MAKE) $(MAKESILENT) -f pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/build.make pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.s
 .PHONY : full_amplitude_sim.cpp.s
 
 # Help Target
@@ -178,6 +178,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/shunzi/qvm/PyQC1.6/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/shunzi/qvm/PyQC/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../')
-
 from pyqc import *
 
 
@@ -38,7 +35,7 @@ if __name__ == "__main__":
     ########## step4 ########### 执行线路
     env.exec()
     ########## step5 ########### 返回结果
-    res_str = env.getMeasureResult(show=True,name='Grover_result')
+    res_str = env.getMeasureResult(show=True, name='Grover_result')
     print('sample result:',res_str)
 
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/shunzi/qvm/PyQC1.6/pybind11/fullSim_wapper.cpp" "/home/shunzi/qvm/PyQC1.6/build/pybind11/CMakeFiles/fullAlib.dir/fullSim_wapper.cpp.o"
+  "/home/shunzi/qvm/PyQC/pybind11/fullSim_wapper.cpp" "/home/shunzi/qvm/PyQC/build/pybind11/CMakeFiles/fullAlib.dir/fullSim_wapper.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -20,7 +20,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/shunzi/qvm/PyQC1.6/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/DependInfo.cmake"
+  "/home/shunzi/qvm/PyQC/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

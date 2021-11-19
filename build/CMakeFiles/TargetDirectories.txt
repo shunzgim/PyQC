@@ -1,8 +1,8 @@
-/home/shunzi/qvm/PyQC1.6/build/CMakeFiles/rebuild_cache.dir
-/home/shunzi/qvm/PyQC1.6/build/CMakeFiles/edit_cache.dir
-/home/shunzi/qvm/PyQC1.6/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/rebuild_cache.dir
-/home/shunzi/qvm/PyQC1.6/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/edit_cache.dir
-/home/shunzi/qvm/PyQC1.6/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir
-/home/shunzi/qvm/PyQC1.6/build/pybind11/CMakeFiles/rebuild_cache.dir
-/home/shunzi/qvm/PyQC1.6/build/pybind11/CMakeFiles/edit_cache.dir
-/home/shunzi/qvm/PyQC1.6/build/pybind11/CMakeFiles/fullAlib.dir
+/home/shunzi/qvm/PyQC/build/CMakeFiles/rebuild_cache.dir
+/home/shunzi/qvm/PyQC/build/CMakeFiles/edit_cache.dir
+/home/shunzi/qvm/PyQC/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/rebuild_cache.dir
+/home/shunzi/qvm/PyQC/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/edit_cache.dir
+/home/shunzi/qvm/PyQC/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir
+/home/shunzi/qvm/PyQC/build/pybind11/CMakeFiles/rebuild_cache.dir
+/home/shunzi/qvm/PyQC/build/pybind11/CMakeFiles/edit_cache.dir
+/home/shunzi/qvm/PyQC/build/pybind11/CMakeFiles/fullAlib.dir

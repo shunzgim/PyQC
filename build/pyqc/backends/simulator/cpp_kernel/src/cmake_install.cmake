@@ -1,4 +1,4 @@
-# Install script for directory: /home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/src
+# Install script for directory: /home/shunzi/qvm/PyQC/pyqc/backends/simulator/cpp_kernel/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

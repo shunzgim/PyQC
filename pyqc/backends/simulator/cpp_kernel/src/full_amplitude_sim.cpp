@@ -94,9 +94,6 @@ void fullASim::applyOneGate(StateType * buf, int target, int tag=0){
       }
     }
   }
-  //for(std::size_t i = 0; i < this->local_size; i++)
-  //  std::cout<<this->state[i]<<" ";
-  //std::cout<<std::endl;
 }
 
 
@@ -139,9 +136,6 @@ void fullASim::applyControlOneGate(StateType * buf,  int target, int control, in
       }
     }
   }
-  //for(std::size_t i = 0; i < this->local_size; i++)
-  //  std::cout<<this->state[i]<<" ";
-  //std::cout<<std::endl;
 }
 
 void fullASim::applyConstantModExp(int a, int N, int size){
@@ -155,8 +149,6 @@ void fullASim::applyConstantModExp(int a, int N, int size){
       t %= N;
     }
     std::size_t p = i<<n;
-    //if(i<100)
-    //  std::cout<<i<<": |"<<p+1<<">  -->  |"<<p+t<<">"<<" t="<<t<<std::endl;
     this->tmp_buffer_1[p+t] = this->buffer[p+1]; // |j>|1>  -->   |j>|a^jmodN>
   } 
   memcpy(this->buffer, this->tmp_buffer_1,sizeof(StateType)*this->local_size);
@@ -173,16 +165,11 @@ StateType fullASim::getOneAmplitudeFromBinstring(std::string binstr){
     }
     if(id<0 || id>this->local_size-1)
       throw "error!";
-    //std::cout<<binstr<<" "<<id<<std::endl;
     return this->state[0][id]; // state in buffer
 }
 
 
 float fullASim::getExpectation(int * target, int size){
-  //std::cout<<size<<std::endl;
-  //for(int i=0; i<size; i++)
-  //  std::cout<<i<<" ";
-  //std::cout<<std::endl;
   float expectation=0;
 #pragma omp parallel for reduction(+:expectation)
   for(std::size_t i=0; i<this->local_size; i++)
@@ -195,21 +182,15 @@ float fullASim::getExpectation(int * target, int size){
       if((1<<bit)&i)
         coefficient *= -1;
     }
-    //std::cout<<"coefficient: "<<coefficient<<" delta:"<<delta<<std::endl;
     expectation += coefficient*delta;
   }
-  //std::cout<<expectation<<std::endl;
   return expectation;
 }
 
 
 int fullASim::getMeasureResultHandle(int size){
-  /*
-  Simple implementation......
-  */
   std::size_t lens = 1<<size;
   std::size_t step = this->local_size / lens;
-  //std::cout<<lens<<" "<<step<<std::endl;
   float * tmp = new float[lens];
   #pragma omp parallel for 
   for(std::size_t i=0; i<lens; i++)
@@ -223,21 +204,10 @@ int fullASim::getMeasureResultHandle(int size){
     }
     tmp[i] = ss;
   }
-  /*
-  float ss=0;
-  for(std::size_t i=0; i<lens; i++){
-    if(i<100)
-      std::cout<<i<<" "<<tmp[i]<<std::endl;
-    ss+=tmp[i];
-  }
-  std::cout<<"s:"<<ss<<std::endl;
-  */
   float max_v = 0;
   std::size_t max_id = 0;
   for(std::size_t i=0; i<lens; i++)
   {
-    //if(tmp[i] > 0)
-      //std::cout<<i<<" "<<tmp[i]<<std::endl;
     if(tmp[i] >= max_v)
     {
       std::cout<<i<<" "<<tmp[i]<<std::endl;
@@ -251,19 +221,6 @@ int fullASim::getMeasureResultHandle(int size){
 
 
 void fullASim::grad_helper_init(StateType * buf_list, int * target_list, int * size_list, int size){
-  /*
-  int s, t=0;
-  std::cout<<"size："<<size<<std::endl;
-  for(int i=0; i<size; i++){
-    s = size_list[i];
-    std::cout<<"s: "<<s<<std::endl;
-    for(int j=0; j<s; j++){
-      StateType tmp[4] = {buf_list[4*t],buf_list[4*t+1],buf_list[4*t+2],buf_list[4*t+3]};
-      std::cout<<tmp[0]<<' '<<tmp[1]<<' '<<tmp[2]<<' '<<tmp[3]<<' '<<target_list[t]<<std::endl;
-      t += 1;
-    }
-  }
-  */
   int s, t=0;
   #pragma omp parallel for
     for(std::size_t i=0; i<this->local_size; i++)
@@ -274,60 +231,23 @@ void fullASim::grad_helper_init(StateType * buf_list, int * target_list, int * s
   {
     s = size_list[i];
     memcpy(this->tmp_buffer_2,this->buffer,sizeof(StateType)*this->local_size);
-    //std::cout<<"---------------------------"<<i<<"---------------------------"<<std::endl;
-    //for(std::size_t i=0; i<this->local_size; i++){
-    //  std::cout<<this->buffer[i]<<"    "<<this->tmp_buffer_2[i]<<std::endl;
-    //}
-    //std::cout<<"---------------------------"<<i<<"---------------------------"<<std::endl;
     for(int j=0; j<s; j++)
     {
       StateType tmp[4] = {buf_list[4*t],buf_list[4*t+1],buf_list[4*t+2],buf_list[4*t+3]};
-      //std::cout<<target_list[t]<<" ";
       this->applyOneGate(tmp, target_list[t], 2); //作用在tmp_buffer_2上
       t += 1;
     }
-    //std::cout<<std::endl;
-    //for(std::size_t i=0; i<this->local_size; i++){
-    //  std::cout<<this->buffer[i]<<"    "<<this->tmp_buffer_2[i]<<std::endl;
-    //}
 
     #pragma omp parallel for
     for(std::size_t i=0; i<this->local_size; i++)
     {
       this->tmp_buffer_1[i] += this->tmp_buffer_2[i];
     }
-    //std::cout<<"---------------------------"<<i<<"---------------------------"<<std::endl;
-    //for(std::size_t i=0; i<this->local_size; i++){
-    //  std::cout<<this->buffer[i]<<"    "<<this->tmp_buffer_2[i]<<"    "<<this->tmp_buffer_1[i]<<std::endl;
-    //}
   }
-  //std::cout<<"---------------------------grad_helper_init_end---------------------------"<<std::endl;
-  //for(std::size_t i=0; i<this->local_size; i++){
-  //  std::cout<<this->buffer[i]<<"    "<<this->tmp_buffer_1[i]<<std::endl;
-  //}  
 }
 
 
 float fullASim::grad_helper(StateType * buf_list, int * target_list, int * size_list, int size){
-  /*
-  int s, t=0;
-  std::cout<<"size："<<size<<std::endl;
-  for(int i=0; i<size; i++){
-    s = size_list[i];
-    std::cout<<"s: "<<s<<std::endl;
-    for(int j=0; j<s; j++){
-      StateType tmp[4] = {buf_list[4*t],buf_list[4*t+1],buf_list[4*t+2],buf_list[4*t+3]};
-      std::cout<<tmp[0]<<' '<<tmp[1]<<' '<<tmp[2]<<' '<<tmp[3]<<' '<<target_list[t]<<std::endl;
-      t += 1;
-    }
-  }
-  return 3.14;
-  */
- //std::cout<<"---------------------------grag_helper_start---------------------------"<<std::endl;
-  //for(std::size_t i=0; i<this->local_size; i++){
-  //  std::cout<<this->buffer[i]<<"    "<<this->tmp_buffer_1[i]<<std::endl;
-  //}
-
   float res=0;
   int s, t=0;
   for(int i=0; i<size; i++)
@@ -347,10 +267,6 @@ float fullASim::grad_helper(StateType * buf_list, int * target_list, int * size_
       res += tmp.imag();
     }
   } 
-  //std::cout<<"---------------------------grag_helper_end---------------------------"<<std::endl;
-  //for(std::size_t i=0; i<this->local_size; i++){
-  //  std::cout<<this->buffer[i]<<"    "<<this->tmp_buffer_1[i]<<std::endl;
-  //}
 
   return -2*res;
 }

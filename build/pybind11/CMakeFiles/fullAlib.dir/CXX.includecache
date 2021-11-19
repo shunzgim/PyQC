@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/shunzi/qvm/PyQC1.6/pybind11/fullSim_wapper.cpp
+/home/shunzi/qvm/PyQC/pybind11/fullSim_wapper.cpp
 pybind11/pybind11.h
 -
 pybind11/numpy.h
 -
 ../pyqc/backends/simulator/cpp_kernel/include/full_amplitude_sim.hpp
-/home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/include/full_amplitude_sim.hpp
+/home/shunzi/qvm/PyQC/pyqc/backends/simulator/cpp_kernel/include/full_amplitude_sim.hpp
 
-/home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/include/full_amplitude_sim.hpp
+/home/shunzi/qvm/PyQC/pyqc/backends/simulator/cpp_kernel/include/full_amplitude_sim.hpp
 iostream
 -
 complex

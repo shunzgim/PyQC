@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/shunzi/qvm/PyQC1.6/pyqc/backends/simulator/cpp_kernel/src/full_amplitude_sim.cpp" "/home/shunzi/qvm/PyQC1.6/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.o"
+  "/home/shunzi/qvm/PyQC/pyqc/backends/simulator/cpp_kernel/src/full_amplitude_sim.cpp" "/home/shunzi/qvm/PyQC/build/pyqc/backends/simulator/cpp_kernel/src/CMakeFiles/fas.dir/full_amplitude_sim.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
