@@ -14,6 +14,7 @@ setuptools.setup(
   url="https://github.com/shunzgim/PyQC",
   packages=setuptools.find_packages(),
   install_requires=['numpy', 'matplotlib', 'scipy', 'opt_einsum','psutil'],
+  package_data = {'pyqc.backends.simulator.libs':['*.so']},
   classifiers=[
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
