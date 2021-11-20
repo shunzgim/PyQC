@@ -3,7 +3,6 @@
 
 ### 安装环境
 - Linux (Ubuntu)
-- GCC 7.5.0
 - conda 4.8.5 (python3.8)
 ### 安装
 
