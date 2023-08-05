@@ -6,9 +6,9 @@ with open("README.md", "r") as fh:
 setuptools.setup(
   name="pyqc",
   version="0.1.0",
-  author="shunzi",
-  author_email="shunzgim@buaa.edu.cn",
-  description="quantum circuit simulatior",
+  author="hongshun",
+  author_email="shunzGIM@163.com",
+  description="simulator for quantum circuit",
   long_description=long_description,
   long_description_content_type="text/markdown",
   url="https://github.com/shunzgim/PyQC",
